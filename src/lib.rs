@@ -7,6 +7,7 @@
 
 //= Imports
 pub mod graphics;
+pub mod raylib;
 
 
 //= Enumerations
@@ -17,34 +18,42 @@ pub mod graphics;
 
 pub struct Syzygy {
 
-	//* Core */
+	/// Core
 	pub running: bool,
 
 	//* Graphics */
-	pub graphicsMode: graphics::GraphicsMode,
+	pub graphicsEngine: graphics::GraphicsEngine,
 
 
 }
 
 impl Syzygy {
 
-	//* The creation of the game */
+	/// The creation of the game
 	pub fn create() -> Self {
 		return Syzygy{
 			running: true,
 
-			graphicsMode: graphics::GraphicsMode::None,
+			graphicsEngine: graphics::GraphicsEngine::create(),
 		};
 	}
 
-	//* Draw Loop */
+	/// Draw Loop
 	pub fn draw(&self) -> &Self {
+		print!("{}\n",self.graphicsEngine.mode);
 		return self;
 	}
 
-	//* Check if running */
+	/// Check if running
 	pub fn is_running(&self) -> bool {
 		return self.running;
+	}
+
+	/// Change the graphics mode
+	pub fn set_graphics_mode(mut self, mode: graphics::GraphicsMode) -> Self {
+		self.graphicsEngine.mode = mode;
+
+		return self;
 	}
 
 }

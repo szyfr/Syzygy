@@ -9,6 +9,6 @@ set "name=syzygy"
 
 call ./build.bat
 
-Start remedybg target/debug/%date%/debug/%name%.exe
+Start remedybg target/%date%/debug/examples/testing.exe
 
 code ./
